@@ -8,11 +8,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
-  Widget build (BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:NetflixHomepage(),
-      );
+      home: NetflixHomepage(),
+    );
   }
 }

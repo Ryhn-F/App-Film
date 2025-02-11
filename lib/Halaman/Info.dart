@@ -10,6 +10,15 @@ class Info extends StatefulWidget {
 class _DashboardState extends State<Info> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      child: Text(
+        "flutter bejir",
+        style: TextStyle(
+          color: Colors.red,
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+        ),
+      ),
+    );
   }
 }
