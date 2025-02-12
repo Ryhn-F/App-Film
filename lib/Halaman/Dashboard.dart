@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Info.dart';
+import 'search.dart';
 import 'akun.dart';
 
 void main() {
@@ -18,15 +18,15 @@ class MyApp extends StatelessWidget {
 
 class NetflixHomepage extends StatefulWidget {
   @override
-  _NetflixCloneAppState createState() => _NetflixCloneAppState();
+  _NetflixCloneState createState() => _NetflixCloneState();
 }
 
-class _NetflixCloneAppState extends State<NetflixHomepage> {
+class _NetflixCloneState extends State<NetflixHomepage> {
   int _selectedIndex = 0;
 
   final List<Widget> pages = [
     HomePage(),
-    Info(),
+    Search(),
     MyNetflixPage(),
   ];
 
@@ -53,8 +53,8 @@ class _NetflixCloneAppState extends State<NetflixHomepage> {
           ),
         ),
       ),
-      body:
-          pages[_selectedIndex], // Tampilkan halaman sesuai indeks yang dipilih
+      body: pages[
+          _selectedIndex], // Tampilkan halaman sesuai indeks yang dipilih -Marcell
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
         selectedItemColor: Colors.red,
@@ -71,8 +71,8 @@ class _NetflixCloneAppState extends State<NetflixHomepage> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.download),
-            label: 'Downloads',
+            icon: Icon(Icons.person),
+            label: 'Account',
           ),
         ],
       ),
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Section bagian atas
+          // Section bagian atas -Marcell
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -102,13 +102,14 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: AssetImage('assets/top_movie.jpg'),
-                  fit: BoxFit.cover,
+                  image: NetworkImage('https://wrhsstampede.com/wp-content/uploads/2019/01/bird-box-900x507.jpg'), //GAMBAR GAK MUNCUL
+                  fit: BoxFit.cover, 
                 ),
               ),
             ),
           ),
-          // Section kategori film
+
+          // Section kategori film- Marcell
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -134,7 +135,7 @@ class HomePage extends StatelessWidget {
               }).toList(),
             ),
           ),
-          // Section film baru
+          // Section film baru -Marcell
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -145,6 +146,14 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
+           SizedBox(height: 8), // jarak new movies sama poto -Marcell
+           Image.network(
+              'https://i.pinimg.com/736x/ae/1a/76/ae1a76c00dddb728b559093012d23eae.jpg', //YANG INI JUGA GAK MUNCUL ANJIRRRRRRRRRRRRRR
+              height: 200, 
+              width: double.infinity, 
+              fit: BoxFit.cover, 
+          ),
+  
           GridView.count(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -154,7 +163,7 @@ class HomePage extends StatelessWidget {
             children: List.generate(4, (index) {
               return GestureDetector(
                 onTap: () {
-                  // detail info film
+                  // detail info film -Marcell
                 },
                 child: Container(
                   decoration: BoxDecoration(

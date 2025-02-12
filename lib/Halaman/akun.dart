@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,8 +8,7 @@ class MyApp extends StatelessWidget {
       title: 'My Netflix',
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor:
-            Colors.black, // Ensures background is fully black
+        scaffoldBackgroundColor: Colors.black,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
@@ -50,7 +45,7 @@ class MyNetflixPage extends StatelessWidget {
                                 CircleAvatar(
                                   radius: 40,
                                   backgroundImage: NetworkImage(
-                                    'https://storage.googleapis.com/a1aa/image/yTjOIYdz_bAEHGY-mWHBCmRlDDSDw8PrRL7ryMRj0Ek.jpg',
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqYw6fD4IbN_JQlaq2U1iwZbwvJqggNuE_Pg&s',
                                   ),
                                   backgroundColor: Colors.grey[800],
                                 ),
@@ -58,7 +53,7 @@ class MyNetflixPage extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('2',
+                                    Text('Raycell',
                                         style: TextStyle(
                                             fontSize: 24, color: Colors.white)),
                                     Icon(Icons.arrow_drop_down,
@@ -70,35 +65,32 @@ class MyNetflixPage extends StatelessWidget {
                           ),
                           SizedBox(height: 24),
 
-                          // Notifications Section
                           SectionHeader(
                               icon: Icons.notifications,
                               title: 'Notifications',
                               onTap: () {}),
                           NotificationItem(
                             imageUrl:
-                                'https://storage.googleapis.com/a1aa/image/melHozz6glZUebkxgCSX0wZstu053N1Ox4Iu1QGlou8.jpg',
-                            title: 'Reminder: Now Available',
+                                'https://upload.wikimedia.org/wikipedia/id/0/0d/Civil_War_2024_film_poster.jpeg',
+                            title: 'Reminder: Now Available - Civil War',
                             subtitle: 'Live Episode',
                             date: '11 Jan',
                           ),
                           NotificationItem(
                             imageUrl:
-                                'https://storage.googleapis.com/a1aa/image/CBCgJTdBNm8OucUOWMQs27dzm8N1XwFDR8RFV0HECq0.jpg',
-                            title: 'Just checking in...',
-                            subtitle: 'Enjoying Thaghut?',
-                            date: '9 Jan',
+                                'https://upload.wikimedia.org/wikipedia/en/6/6a/Zootopia_2_%282025_film%29.jpg',
+                            title: 'Zootopia 2',
+                            subtitle: 'Coming Soon',
+                            date: '9 Dec',
                           ),
                           SizedBox(height: 24),
 
-                          // Downloads Section
                           SectionHeader(
-                              icon: Icons.download,
-                              title: 'Downloads',
+                              icon: Icons.person,
+                              title: 'Account',
                               onTap: () {}),
                           SizedBox(height: 24),
 
-                          // My List Section
                           SectionHeader(
                               title: 'My List',
                               actionText: 'See All',
@@ -107,37 +99,40 @@ class MyNetflixPage extends StatelessWidget {
                             items: [
                               ListItem(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/_WXMZCoAy6Tn8Ur_jJseAJ2DBqDwRlsNlN1Xa5xGkAo.jpg',
-                                label: 'Recently Added',
+                                    'https://m.media-amazon.com/images/S/pv-target-images/6d3d1461d50778271845ce7ec81ba2c5d76a20f7f84e5061cd099aabaedc77f9.jpg',
+                                label: 'John Wick: Chapter 4',
                               ),
                               ListItem(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/PaTHtTHe1mZsNGOAe8f1HZTL2iNI8JomBzB9jnFh2QU.jpg',
+                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917060998336582/p18035013_v_v12_ai.png?ex=67acd32f&is=67ab81af&hm=b69822ad0fb97bf205f65923d495b3ae152315314c229bd92cfeb10b05d14fa4&=&format=webp&quality=lossless&width=264&height=396',
+                                label: 'Without Remorse',
                               ),
                               ListItem(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/zUL8t07GBUzqpyrzBQuQqc0fje02cVXQE0HaW5YKMxI.jpg',
-                                label: 'Live',
+                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917666735263914/MV5BNjcwN2Y0MGEtMjkyYy00YTYxLWFjMWItZTEyZjA1MTJhMjE2XkEyXkFqcGc.png?ex=67acd3bf&is=67ab823f&hm=dd7cd4159fb60857b4112dd4d69db94cea7a1ccd6ef6bd4bf6ddfa86af0af271&=&format=webp&quality=lossless&width=472&height=700',
+                                label: 'Old Guard',
                               ),
                             ],
                           ),
                           SizedBox(height: 24),
 
-                          // Trailers You've Watched Section
                           SectionHeader(title: "Trailers You've Watched"),
                           HorizontalList(
                             items: [
-                              ListItem(
+                              ListItem2(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/IEoNWTf-ms8Hi2gvukGnaS8Yd8f3rwP1I8hKDYMYQw8.jpg',
+                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917739401580646/film-13-hours.png?ex=67acd3d0&is=67ab8250&hm=841231b08d2bb36d34354fd5d7a2db252598d037917b3ed1bdc88fa9cd918d83&=&format=webp&quality=lossless&width=279&height=420',
+                                label: '13 Hours',
                               ),
-                              ListItem(
+                              ListItem2(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/-8HswXvBeCkdcx-VtWwh2fmwoGVP835n5aYoibEr59Q.jpg',
+                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917992523763793/QnnFIt4bBj0XEHM-3Fr8CegLotZ4iSfQ67lEksvc721dtmEhwOenrCVcxVrCLs23r6RQ.png?ex=67acd40d&is=67ab828d&hm=2619ec30756b5d4ada0915af098a58a405e9c80e18a1c4c727ca154c6421c08d&=&format=webp&quality=lossless&width=427&height=614',
+                                label: 'Triple 9',
                               ),
-                              ListItem(
+                              ListItem2(
                                 imageUrl:
-                                    'https://storage.googleapis.com/a1aa/image/g_GVv5Ol_GwAAbcqAZ7LfnDV2Cmi44WnsZYnqFxoKr0.jpg',
+                                    'https://media.discordapp.net/attachments/1279079143224512615/1338918476818944080/002546800_1620625209-Wrath_of_Man_0.png?ex=67acd480&is=67ab8300&hm=8d2a5b7a7e8c0a7f3319bb0cc43ecd5af2ffdb66bfb950c61af4ef322449cc4b&=&format=webp&quality=lossless&width=315&height=420',
+                                label: 'Wraith Of Man',
                               ),
                             ],
                           ),
@@ -153,9 +148,6 @@ class MyNetflixPage extends StatelessWidget {
   }
 }
 
-// -----------------
-// UI Components
-// -----------------
 class SectionHeader extends StatelessWidget {
   final IconData? icon;
   final String title;
@@ -255,6 +247,51 @@ class HorizontalList extends StatelessWidget {
   }
 }
 
+class ListItem2 extends StatelessWidget {
+  final String imageUrl;
+  final String label;
+
+  ListItem2({
+    required this.imageUrl,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.network(
+            imageUrl,
+            width: 100,
+            height: 150,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                Icon(Icons.broken_image, color: Colors.redAccent, size: 100),
+          ),
+          if (label != null)
+            Column(
+              children: [
+                Text(
+                  label!,
+                  style: TextStyle(
+                      color: const Color.fromARGB(255, 255, 255, 255)),
+                ),
+                Text(
+                  'Recently Watched',
+                  style:
+                      TextStyle(color: const Color.fromARGB(255, 236, 16, 16)),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+}
+
 class ListItem extends StatelessWidget {
   final String imageUrl;
   final String? label;
@@ -277,7 +314,20 @@ class ListItem extends StatelessWidget {
                 Icon(Icons.broken_image, color: Colors.redAccent, size: 100),
           ),
           if (label != null)
-            Text(label!, style: TextStyle(color: Colors.redAccent)),
+            Column(
+              children: [
+                Text(
+                  label!,
+                  style: TextStyle(
+                      color: const Color.fromARGB(255, 255, 255, 255)),
+                ),
+                Text(
+                  'Recently Added',
+                  style:
+                      TextStyle(color: const Color.fromARGB(255, 236, 16, 16)),
+                ),
+              ],
+            ),
         ],
       ),
     );
