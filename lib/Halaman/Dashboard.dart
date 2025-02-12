@@ -43,12 +43,25 @@ class _NetflixCloneState extends State<NetflixHomepage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Center(
-          child: Text('NETFLIX',
-              style: TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24)),
+          child: Text(
+            'NETFLIX',
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          ),
         ),
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: Colors.white),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications, color: Colors.white),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -67,7 +80,14 @@ class _NetflixCloneState extends State<NetflixHomepage> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> categories = [
     "Action",
     "Comedy",
@@ -80,10 +100,9 @@ class HomePage extends StatelessWidget {
   final List<String> movieGenres = ['Action', 'Romance'];
   final List<String> movieImages = [
     'lib/Images/Wrath.png',
-    'lib/Images/movie1.jpg'
+    'lib/Images/Hours.png'
   ];
-
-  HomePage({super.key});
+  int? hoveredIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +116,11 @@ class HomePage extends StatelessWidget {
             CarouselSlider(
               options: CarouselOptions(
                   height: 180, autoPlay: true, enlargeCenterPage: true),
-              items: ['lib/Images/Carousel.jpg', 'lib/Images/Olala.jpg']
-                  .map((imagePath) {
+              items: [
+                'lib/Images/Carousel.jpg',
+                'lib/Images/Carousel2.jpg',
+                'lib/Images/Batman.jpg',
+              ].map((imagePath) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(imagePath,
@@ -118,17 +140,33 @@ class HomePage extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: categories.map((category) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 6.0, vertical: 8.0),
-                    child: Container(
+                children: categories.asMap().entries.map((entry) {
+                  int index = entry.key;
+                  String category = entry.value;
+                  return MouseRegion(
+                    onEnter: (_) => setState(() => hoveredIndex = index),
+                    onExit: (_) => setState(() => hoveredIndex = null),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
                       padding:
                           EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 6.0, vertical: 8.0),
                       decoration: BoxDecoration(
-                        color: Colors.grey[850],
+                        color: hoveredIndex == index
+                            ? Colors.red.withOpacity(0.8)
+                            : Colors.grey[900],
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.redAccent, width: 1.5),
+                        border: Border.all(color: Colors.red, width: 1.5),
+                        boxShadow: hoveredIndex == index
+                            ? [
+                                BoxShadow(
+                                  color: Colors.white.withOpacity(0.5),
+                                  blurRadius: 10,
+                                  spreadRadius: 1,
+                                )
+                              ]
+                            : [],
                       ),
                       child: Text(category,
                           style: TextStyle(
@@ -152,47 +190,52 @@ class HomePage extends StatelessWidget {
 
             SizedBox(height: 8),
 
-            GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 0.7,
-              ),
-              itemCount: movies.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(movieImages[index],
-                            fit: BoxFit.cover, width: double.infinity),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.5,
+                ),
+                itemCount: movies.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(movieImages[index],
+                              fit: BoxFit.cover, width: double.infinity),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Text(movies[index],
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                    Text(movieGenres[index],
-                        style: TextStyle(color: Colors.white70, fontSize: 12)),
-                    ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                      onPressed: () {},
-                      child: Text("Watch now",
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                  ],
-                );
-              },
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: Text(movies[index],
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                      Text(movieGenres[index],
+                          style:
+                              TextStyle(color: Colors.white70, fontSize: 12)),
+                      SizedBox(height: 8),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red),
+                        onPressed: () {},
+                        child: Text("Watch now",
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ],
         ),

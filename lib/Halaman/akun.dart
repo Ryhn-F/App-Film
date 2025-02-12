@@ -99,6 +99,9 @@ class MyNetflixPage extends StatelessWidget {
                               title: 'My List',
                               actionText: 'See All',
                               onTap: () {}),
+                          SizedBox(
+                            height: 12,
+                          ),
                           HorizontalList(
                             items: [
                               ListItem(
