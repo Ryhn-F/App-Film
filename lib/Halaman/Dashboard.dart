@@ -7,6 +7,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
 }
 
 class NetflixHomepage extends StatefulWidget {
+  const NetflixHomepage({super.key});
+
   @override
   _NetflixCloneState createState() => _NetflixCloneState();
 }
@@ -89,6 +93,8 @@ class HomePage extends StatelessWidget {
     "Horror"
   ];
 
+  HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -102,8 +108,8 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: NetworkImage('https://wrhsstampede.com/wp-content/uploads/2019/01/bird-box-900x507.jpg'), //GAMBAR GAK MUNCUL
-                  fit: BoxFit.cover, 
+                  image: AssetImage("lib/Images/Olala.jpg"), //GAMBAR GAK MUNCUL
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -146,14 +152,14 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-           SizedBox(height: 8), // jarak new movies sama poto -Marcell
-           Image.network(
-              'https://i.pinimg.com/736x/ae/1a/76/ae1a76c00dddb728b559093012d23eae.jpg', //YANG INI JUGA GAK MUNCUL ANJIRRRRRRRRRRRRRR
-              height: 200, 
-              width: double.infinity, 
-              fit: BoxFit.cover, 
+          SizedBox(height: 8), // jarak new movies sama poto -Marcell
+          Image.asset(
+            'lib/Images/Olala.jpg', //YANG INI JUGA GAK MUNCUL ANJIRRRRRRRRRRRRRR
+            height: 200,
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
-  
+
           GridView.count(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),

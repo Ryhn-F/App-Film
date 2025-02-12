@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyNetflixPage extends StatelessWidget {
+  const MyNetflixPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,12 +159,12 @@ class SectionHeader extends StatelessWidget {
   final VoidCallback? onTap;
 
   const SectionHeader({
-    Key? key,
+    super.key,
     this.icon,
     required this.title,
     this.actionText,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -195,12 +199,12 @@ class NotificationItem extends StatelessWidget {
   final String date;
 
   const NotificationItem({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.subtitle,
     required this.date,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -208,13 +212,18 @@ class NotificationItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Image.network(
-            imageUrl,
-            width: 80,
-            height: 80,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) =>
-                Icon(Icons.broken_image, color: Colors.redAccent, size: 80),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              width: 80,
+              height: 80,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    Icon(Icons.broken_image, color: Colors.redAccent, size: 80),
+              ),
+            ),
           ),
           SizedBox(width: 16),
           Column(
@@ -236,7 +245,7 @@ class NotificationItem extends StatelessWidget {
 class HorizontalList extends StatelessWidget {
   final List<Widget> items;
 
-  const HorizontalList({Key? key, required this.items}) : super(key: key);
+  const HorizontalList({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +260,8 @@ class ListItem2 extends StatelessWidget {
   final String imageUrl;
   final String label;
 
-  ListItem2({
+  const ListItem2({
+    super.key,
     required this.imageUrl,
     required this.label,
   });
@@ -263,29 +273,34 @@ class ListItem2 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            imageUrl,
-            width: 100,
-            height: 150,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) =>
-                Icon(Icons.broken_image, color: Colors.redAccent, size: 100),
-          ),
-          if (label != null)
-            Column(
-              children: [
-                Text(
-                  label!,
-                  style: TextStyle(
-                      color: const Color.fromARGB(255, 255, 255, 255)),
-                ),
-                Text(
-                  'Recently Watched',
-                  style:
-                      TextStyle(color: const Color.fromARGB(255, 236, 16, 16)),
-                ),
-              ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              width: 100,
+              height: 150,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Icon(
+                    Icons.broken_image,
+                    color: Colors.redAccent,
+                    size: 100),
+              ),
             ),
+          ),
+          Column(
+            children: [
+              Text(
+                label!,
+                style:
+                    TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
+              ),
+              Text(
+                'Recently Watched',
+                style: TextStyle(color: const Color.fromARGB(255, 236, 16, 16)),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -296,8 +311,7 @@ class ListItem extends StatelessWidget {
   final String imageUrl;
   final String? label;
 
-  const ListItem({Key? key, required this.imageUrl, this.label})
-      : super(key: key);
+  const ListItem({super.key, required this.imageUrl, this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -305,13 +319,20 @@ class ListItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16.0),
       child: Column(
         children: [
-          Image.network(
-            imageUrl,
-            width: 100,
-            height: 150,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) =>
-                Icon(Icons.broken_image, color: Colors.redAccent, size: 100),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              width: 100,
+              height: 150,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Icon(
+                    Icons.broken_image,
+                    color: Colors.redAccent,
+                    size: 100),
+              ),
+            ),
           ),
           if (label != null)
             Column(

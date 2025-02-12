@@ -5,6 +5,8 @@ void main() {
 }
 
 class Search extends StatelessWidget {
+  const Search({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,8 @@ class Search extends StatelessWidget {
 }
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -74,24 +78,22 @@ class _SearchPageState extends State<SearchPage> {
           // Variable buat Search Bar -Marcell
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 200,
               child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search...',
-                  hintStyle: TextStyle(
-                      color: Colors.white),
-                  prefixIcon: Icon(Icons.search,
-                      color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.search, color: Colors.white),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
-                style: TextStyle(
-                    color: Colors.white),
+                style: TextStyle(color: Colors.white),
                 onChanged: (query) {
-                  filterSearchResults(query); // buat memfilter hasil pencarian -Marcell
+                  filterSearchResults(
+                      query); // buat memfilter hasil pencarian -Marcell
                 },
               ),
             ),
@@ -104,8 +106,7 @@ class _SearchPageState extends State<SearchPage> {
           return ListTile(
             title: Text(
               filteredItems[index],
-              style: TextStyle(
-                  color: Colors.white), 
+              style: TextStyle(color: Colors.white),
             ),
           );
         },
