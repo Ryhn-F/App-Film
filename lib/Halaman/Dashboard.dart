@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'search.dart';
 import 'akun.dart';
 
@@ -27,12 +28,7 @@ class NetflixHomepage extends StatefulWidget {
 
 class _NetflixCloneState extends State<NetflixHomepage> {
   int _selectedIndex = 0;
-
-  final List<Widget> pages = [
-    HomePage(),
-    Search(),
-    MyNetflixPage(),
-  ];
+  final List<Widget> pages = [HomePage(), Search(), MyNetflixPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -47,37 +43,24 @@ class _NetflixCloneState extends State<NetflixHomepage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Center(
-          child: Text(
-            'Netflix',
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
-          ),
+          child: Text('NETFLIX',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24)),
         ),
       ),
-      body: pages[
-          _selectedIndex], // Tampilkan halaman sesuai indeks yang dipilih -Marcell
+      body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Account',
-          ),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
         ],
       ),
     );
@@ -88,9 +71,16 @@ class HomePage extends StatelessWidget {
   final List<String> categories = [
     "Action",
     "Comedy",
-    "Drama",
+    "Romance",
     "Sci-Fi",
-    "Horror"
+    "Horror",
+    "Sports"
+  ];
+  final List<String> movies = ['Fast & Furious 9', 'Resort to Love'];
+  final List<String> movieGenres = ['Action', 'Romance'];
+  final List<String> movieImages = [
+    'lib/Images/Wrath.png',
+    'lib/Images/movie1.jpg'
   ];
 
   HomePage({super.key});
@@ -98,92 +88,114 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          // Section bagian atas -Marcell
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 180,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
-                  image: AssetImage("lib/Images/Olala.jpg"), //GAMBAR GAK MUNCUL
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-
-          // Section kategori film- Marcell
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Top Categories",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: categories.map((category) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Chip(
-                    backgroundColor: Colors.redAccent,
-                    label:
-                        Text(category, style: TextStyle(color: Colors.white)),
-                  ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Top View Carousel
+            CarouselSlider(
+              options: CarouselOptions(
+                  height: 180, autoPlay: true, enlargeCenterPage: true),
+              items: ['lib/Images/Carousel.jpg', 'lib/Images/Olala.jpg']
+                  .map((imagePath) {
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(imagePath,
+                      fit: BoxFit.cover, width: double.infinity),
                 );
               }).toList(),
             ),
-          ),
-          // Section film baru -Marcell
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "New Movies",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          SizedBox(height: 8), // jarak new movies sama poto -Marcell
-          Image.asset(
-            'lib/Images/Olala.jpg', //YANG INI JUGA GAK MUNCUL ANJIRRRRRRRRRRRRRR
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
 
-          GridView.count(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            children: List.generate(4, (index) {
-              return GestureDetector(
-                onTap: () {
-                  // detail info film -Marcell
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: AssetImage('assets/movie_$index.jpg'),
-                      fit: BoxFit.cover,
+            const SizedBox(height: 10),
+
+            // Top Categories
+            Text("Top Categories",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold)),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: categories.map((category) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 6.0, vertical: 8.0),
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[850],
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.redAccent, width: 1.5),
+                      ),
+                      child: Text(category,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
                     ),
-                  ),
-                ),
-              );
-            }),
-          ),
-        ],
+                  );
+                }).toList(),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            // New Movies Section
+            Text("New Movies",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold)),
+
+            SizedBox(height: 8),
+
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: movies.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(movieImages[index],
+                            fit: BoxFit.cover, width: double.infinity),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Text(movies[index],
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    Text(movieGenres[index],
+                        style: TextStyle(color: Colors.white70, fontSize: 12)),
+                    ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                      onPressed: () {},
+                      child: Text("Watch now",
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
