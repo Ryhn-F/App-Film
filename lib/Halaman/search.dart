@@ -43,10 +43,12 @@ class _SearchPageState extends State<SearchPage> {
   // controller untuk text field pencarian -Marcell (ilmu atp)
   TextEditingController searchController = TextEditingController();
 
+  int? hoveredIndex;
+
   @override
   void initState() {
     super.initState();
-    filteredItems = allItems; 
+    filteredItems = allItems;
   }
 
   // fungsi buat.... eh...untuk memfilter item berdasarkan teks pencarian, nah itu dia -Marcell
@@ -65,8 +67,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Colors.black, 
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           'Search Page',
@@ -102,10 +103,41 @@ class _SearchPageState extends State<SearchPage> {
       body: ListView.builder(
         itemCount: filteredItems.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              filteredItems[index],
-              style: TextStyle(color: Colors.white),
+          return MouseRegion(
+            onEnter: (_) {
+              setState(() {
+                hoveredIndex = index;
+              });
+            },
+            onExit: (_) {
+              setState(() {
+                hoveredIndex = null;
+              });
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              padding: EdgeInsets.all(12),
+              margin: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                boxShadow: [
+                  BoxShadow(
+                    color: hoveredIndex == index
+                        ? Colors.red.withOpacity(0.6)
+                        : Colors.transparent,
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: Text(
+                filteredItems[index],
+                style: TextStyle(
+                  color: hoveredIndex == index ? Colors.red : Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           );
         },
