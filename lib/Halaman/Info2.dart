@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'Dashboard.dart';
 
 void main() {
-  runApp(InfoHours());
+  runApp(InfoWrath());
 }
 
-class InfoHours extends StatelessWidget {
+class InfoWrath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +47,7 @@ class MovieDetailPage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    'https://awsimages.detik.net.id/community/media/visual/2020/06/11/film-13-hours.jpeg?w=1200',
+                    'https://awsimages.detik.net.id/community/media/visual/2021/05/08/1wrath-of-manfinal.jpeg?w=1200',
                     width: 300,
                     height: 450,
                     fit: BoxFit.cover,
@@ -56,19 +56,19 @@ class MovieDetailPage extends StatelessWidget {
               ),
             ),
             Text(
-              '13 Hours: The Secret Soldiers of Benghazi',
+              'Wrath of Man',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                'A security team consisting of six members fights to defend an American diplomatic compound in Benghazi, Libya, against a wave of terrorist attacks.',
+                'H is a mysterious man who starts working for a cash moving truck company. He becomes known for using amazing precision and dexterity to neutralise robbers. However, H is actually out for revenge.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
             Text(
-              'Director: Michael Bay',
+              'Director: Guy Ritchie',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
             SizedBox(height: 20),
@@ -127,7 +127,7 @@ class MovieDetailPage extends StatelessWidget {
                   ),
                   MovieItem(
                     imageUrl:
-                        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrp_ezol7ECKudinVebbjkT6bmLH8xBzs3dwn2Fj72LPqe5t2gEvvvDQhr-Ql7uIrdGrPC',
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCJ3u0r_t4PXQntdqs_WkaSSncID7ubxKNBA&s',
                   ),
                 ],
               ),

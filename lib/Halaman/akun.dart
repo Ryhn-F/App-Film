@@ -42,7 +42,6 @@ class MyNetflixPage extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          // Profile Section
                           Center(
                             child: Column(
                               children: [
@@ -111,12 +110,12 @@ class MyNetflixPage extends StatelessWidget {
                               ),
                               ListItem(
                                 imageUrl:
-                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917060998336582/p18035013_v_v12_ai.png?ex=67acd32f&is=67ab81af&hm=b69822ad0fb97bf205f65923d495b3ae152315314c229bd92cfeb10b05d14fa4&=&format=webp&quality=lossless&width=264&height=396',
+                                    'https://m.media-amazon.com/images/I/81nGk-ovjaL._AC_UF1000,1000_QL80_.jpg',
                                 label: 'Without Remorse',
                               ),
                               ListItem(
                                 imageUrl:
-                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917666735263914/MV5BNjcwN2Y0MGEtMjkyYy00YTYxLWFjMWItZTEyZjA1MTJhMjE2XkEyXkFqcGc.png?ex=67acd3bf&is=67ab823f&hm=dd7cd4159fb60857b4112dd4d69db94cea7a1ccd6ef6bd4bf6ddfa86af0af271&=&format=webp&quality=lossless&width=472&height=700',
+                                    'https://m.media-amazon.com/images/M/MV5BNjcwN2Y0MGEtMjkyYy00YTYxLWFjMWItZTEyZjA1MTJhMjE2XkEyXkFqcGc@._V1_.jpg',
                                 label: 'Old Guard',
                               ),
                             ],
@@ -128,18 +127,18 @@ class MyNetflixPage extends StatelessWidget {
                             items: [
                               ListItem2(
                                 imageUrl:
-                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917739401580646/film-13-hours.png?ex=67acd3d0&is=67ab8250&hm=841231b08d2bb36d34354fd5d7a2db252598d037917b3ed1bdc88fa9cd918d83&=&format=webp&quality=lossless&width=279&height=420',
+                                    'https://awsimages.detik.net.id/community/media/visual/2020/06/11/film-13-hours.jpeg?w=1200',
                                 label: '13 Hours',
                               ),
                               ListItem2(
                                 imageUrl:
-                                    'https://media.discordapp.net/attachments/1279079143224512615/1338917992523763793/QnnFIt4bBj0XEHM-3Fr8CegLotZ4iSfQ67lEksvc721dtmEhwOenrCVcxVrCLs23r6RQ.png?ex=67acd40d&is=67ab828d&hm=2619ec30756b5d4ada0915af098a58a405e9c80e18a1c4c727ca154c6421c08d&=&format=webp&quality=lossless&width=427&height=614',
+                                    'https://play-lh.googleusercontent.com/QnnFIt4bBj0XEHM-3Fr8CegLotZ4iSfQ67lEksvc721dtmEhwOenrCVcxVrCLs23r6RQ',
                                 label: 'Triple 9',
                               ),
                               ListItem2(
                                 imageUrl:
-                                    'https://media.discordapp.net/attachments/1279079143224512615/1338918476818944080/002546800_1620625209-Wrath_of_Man_0.png?ex=67acd480&is=67ab8300&hm=8d2a5b7a7e8c0a7f3319bb0cc43ecd5af2ffdb66bfb950c61af4ef322449cc4b&=&format=webp&quality=lossless&width=315&height=420',
-                                label: 'Wraith Of Man',
+                                    'https://awsimages.detik.net.id/community/media/visual/2021/05/08/1wrath-of-manfinal.jpeg?w=1200',
+                                label: 'Wraith of Man',
                               ),
                             ],
                           ),

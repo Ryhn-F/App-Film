@@ -34,18 +34,22 @@ class _SearchPageState extends State<SearchPage> {
     "Triple 9",
     "Wraith Of Man",
     "Zootopia",
-    "Toy Story 5"
+    "13 Bom di Jakarta"
   ];
 
+  // list yang bakal ditampilin setelah pencarian -Marcell
   List<String> filteredItems = [];
+
+  // controller untuk text field pencarian -Marcell (ilmu atp)
   TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    filteredItems = allItems;
+    filteredItems = allItems; 
   }
 
+  // fungsi buat.... eh...untuk memfilter item berdasarkan teks pencarian, nah itu dia -Marcell
   void filterSearchResults(String query) {
     setState(() {
       if (query.isEmpty) {
@@ -61,14 +65,16 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor:
+          Colors.black, 
       appBar: AppBar(
         title: Text(
           'Search Page',
           style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black, // set warna app bar jadi item - Marcell
         actions: [
+          // Variable buat Search Bar -Marcell
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
@@ -85,7 +91,8 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 style: TextStyle(color: Colors.white),
                 onChanged: (query) {
-                  filterSearchResults(query);
+                  filterSearchResults(
+                      query); // buat memfilter hasil pencarian -Marcell
                 },
               ),
             ),
@@ -95,48 +102,10 @@ class _SearchPageState extends State<SearchPage> {
       body: ListView.builder(
         itemCount: filteredItems.length,
         itemBuilder: (context, index) {
-          return AnimatedContainer(
-            duration: Duration(milliseconds: 300), // Smooth transition
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white.withOpacity(0.1), // Base color
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white.withOpacity(0.3),
-                  blurRadius: 15,
-                  spreadRadius: 2,
-                  offset: Offset(0, 5),
-                ),
-              ],
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white.withOpacity(0.2),
-                  Colors.white.withOpacity(0.5),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0.3, 1.0],
-              ),
-            ),
-            child: MouseRegion(
-              onEnter: (_) {
-                setState(() {
-                  // Hover effect trigger
-                });
-              },
-              onExit: (_) {
-                setState(() {
-                  // Revert back to original
-                });
-              },
-              child: ListTile(
-                title: Text(
-                  filteredItems[index],
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+          return ListTile(
+            title: Text(
+              filteredItems[index],
+              style: TextStyle(color: Colors.white),
             ),
           );
         },

@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'search.dart';
 import 'akun.dart';
+import 'Info.dart';
+import 'Info2.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Dashboard());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -96,12 +98,19 @@ class _HomePageState extends State<HomePage> {
     "Horror",
     "Sports"
   ];
-  final List<String> movies = ['Fast & Furious 9', 'Resort to Love'];
-  final List<String> movieGenres = ['Action', 'Romance'];
+  final List<String> movies = [
+    'Wrath of Man',
+    '13 Hours: The Secret Soldiers of Benghazi'
+  ];
+  final List<String> movieGenres = ['Action, Crime, Thriller', 'Action, War'];
   final List<String> movieImages = [
     'lib/Images/Wrath.png',
     'lib/Images/Hours.png'
   ];
+
+  // Define movie detail screens
+  final List<Widget> moviesDetail = [InfoWrath(), InfoHours()];
+
   int? hoveredIndex;
 
   @override
@@ -112,7 +121,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top View Carousel
             CarouselSlider(
               options: CarouselOptions(
                   height: 180, autoPlay: true, enlargeCenterPage: true),
@@ -128,10 +136,7 @@ class _HomePageState extends State<HomePage> {
                 );
               }).toList(),
             ),
-
             const SizedBox(height: 10),
-
-            // Top Categories
             Text("Top Categories",
                 style: TextStyle(
                     color: Colors.white,
@@ -178,18 +183,13 @@ class _HomePageState extends State<HomePage> {
                 }).toList(),
               ),
             ),
-
             const SizedBox(height: 10),
-
-            // New Movies Section
             Text("New Movies",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold)),
-
             SizedBox(height: 8),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: GridView.builder(
@@ -228,7 +228,15 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red),
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navigate to the correct movie detail based on the index
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => moviesDetail[
+                                    index]), // Passing the correct page
+                          );
+                        },
                         child: Text("Watch now",
                             style: TextStyle(color: Colors.white)),
                       ),
